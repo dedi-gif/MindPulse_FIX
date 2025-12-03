@@ -1,6 +1,7 @@
 "use client";
 
-import { format } from 'date-fns';
+import { format, subDays } from 'date-fns';
+import { id } from 'date-fns/locale';
 import {
   Area,
   AreaChart,
@@ -38,10 +39,19 @@ const moodTicks = [
 
 export function MoodHistoryChart({ entries }: MoodHistoryChartProps) {
   const chartData = entries.map((entry) => ({
-    date: format(new Date(entry.date), 'MMM d'),
+    date: new Date(entry.date),
     moodValue: MOOD_MAPPING[entry.mood]?.value || 0,
     fill: MOOD_MAPPING[entry.mood]?.color || 'hsl(var(--foreground))',
   }));
+
+  const is7DayView = entries.length <= 7;
+  const xAxisFormatter = (date: Date) => {
+    if (is7DayView) {
+      return format(date, 'E', { locale: id }); // Sen, Sel, Rab...
+    }
+    return format(date, 'MMM d'); // Jan 1, Jan 2...
+  };
+
 
   return (
     <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -49,7 +59,7 @@ export function MoodHistoryChart({ entries }: MoodHistoryChartProps) {
         accessibilityLayer
         data={chartData}
         margin={{
-          left: 12,
+          left: -20,
           right: 12,
         }}
       >
@@ -59,12 +69,13 @@ export function MoodHistoryChart({ entries }: MoodHistoryChartProps) {
           tickLine={false}
           axisLine={false}
           tickMargin={8}
-          tickFormatter={(value) => value}
+          tickFormatter={xAxisFormatter}
         />
         <YAxis 
-            domain={[0.5, 5.5]}
-            ticks={moodTicks.map(t => t.value)}
-            tickFormatter={(value) => moodTicks.find(t => t.value === value)?.label ?? ''}
+            dataKey="moodValue"
+            domain={[0, is7DayView ? 10 : 6]}
+            ticks={is7DayView ? [0, 3, 6, 10] : moodTicks.map(t => t.value)}
+            tickFormatter={(value) => is7DayView ? value.toString() : moodTicks.find(t => t.value === value)?.label ?? ''}
             tickLine={false}
             axisLine={false}
             tickMargin={8}

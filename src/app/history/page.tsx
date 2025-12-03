@@ -39,17 +39,17 @@ export default function HistoryPage() {
     <div className="p-4 md:p-6 space-y-6 animate-in fade-in-50 duration-500">
       {entries.length === 0 ? (
         <Card className="flex flex-col items-center justify-center text-center p-12">
-            <CardTitle className="text-2xl font-headline">No History Yet</CardTitle>
+            <CardTitle className="text-2xl font-headline">Belum Ada Riwayat</CardTitle>
             <CardDescription className="mt-2">
-                Start by logging your mood on the Dashboard page.
+                Mulailah dengan mencatat suasana hati Anda di halaman Beranda.
             </CardDescription>
         </Card>
       ) : (
         <>
             <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline">Mood Calendar</CardTitle>
-                    <CardDescription>Your mood history at a glance. Click a day to see details.</CardDescription>
+                    <CardTitle className="font-headline">Kalender Suasana Hati</CardTitle>
+                    <CardDescription>Riwayat suasana hati Anda dalam sekejap. Klik satu hari untuk melihat detailnya.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <MoodCalendar entries={entries} />
@@ -57,8 +57,8 @@ export default function HistoryPage() {
             </Card>
             <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline">Mood Trends</CardTitle>
-                    <CardDescription>Your mood fluctuations over the last 30 entries.</CardDescription>
+                    <CardTitle className="font-headline">Tren Suasana Hati</CardTitle>
+                    <CardDescription>Fluktuasi suasana hati Anda selama 30 entri terakhir.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <MoodHistoryChart entries={entries.slice(-30)} />

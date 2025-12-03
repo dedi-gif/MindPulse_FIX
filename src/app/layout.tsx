@@ -6,7 +6,7 @@ import { JournalProvider } from '@/hooks/use-journal-store';
 
 export const metadata: Metadata = {
   title: 'MindPulse',
-  description: 'Your personal mental well-being and mood tracking companion.',
+  description: 'Sistem Kesehatan Mental Anda',
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
