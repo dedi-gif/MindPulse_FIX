@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "calm-background",
+      "description": "A calming abstract background with purple and blue gradients.",
+      "imageUrl": "https://images.unsplash.com/photo-1762742673293-4d8e570abfd4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjYWxtJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY0NzQyMjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calm abstract"
+    }
+  ]
 }
