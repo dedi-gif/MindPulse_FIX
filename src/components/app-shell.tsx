@@ -15,13 +15,14 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
-import { LayoutDashboard, Calendar, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Calendar, Sparkles, Settings } from 'lucide-react';
 import { Logo } from '@/components/icons/logo';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/history', label: 'History', icon: Calendar },
   { href: '/insights', label: 'Insights', icon: Sparkles },
+  { href: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
