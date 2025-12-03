@@ -3,7 +3,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SlidersHorizontal, Heart, Square, Activity } from 'lucide-react';
+import { SlidersHorizontal, Heart, Activity } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import React from 'react';
 
@@ -83,7 +83,7 @@ export default function ActivitiesPage() {
                      <div className="space-y-3">
                         <ActivityCard 
                             title="Relaksasi Otot Progresif" 
-                            description="" 
+                            description="Teknik untuk mengurangi ketegangan pada otot dan pikiran" 
                             time="20 menit" 
                         />
                     </div>
@@ -92,4 +92,3 @@ export default function ActivitiesPage() {
         </div>
     );
 }
-

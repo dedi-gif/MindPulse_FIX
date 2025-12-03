@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -15,7 +16,7 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
-import { LayoutDashboard, Calendar, Sparkles, Settings, Book, Activity, Home } from 'lucide-react';
+import { LayoutDashboard, Book, Activity, Settings, Home } from 'lucide-react';
 import { Logo } from '@/components/icons/logo';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -31,8 +32,8 @@ const navItems = [
 const desktopNavItems = [
     { href: '/', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/history', label: 'Jurnal', icon: Book },
-    { href: '/insights', label: 'Insights', icon: Sparkles },
-    { href: '/settings', label: 'Settings', icon: Settings },
+    { href: '/insights', label: 'Aktivitas', icon: Activity },
+    { href: '/settings', label: 'Pengaturan', icon: Settings },
 ]
 
 const BottomNavBar = () => {
@@ -92,7 +93,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 >
                   <Link href={item.href}>
                     <item.icon />
-                    <span>{item.label === 'History' ? 'Jurnal' : item.label}</span>
+                    <span>{item.label}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

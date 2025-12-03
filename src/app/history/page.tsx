@@ -12,7 +12,7 @@ import { Calendar, Save } from 'lucide-react';
 import { useJournal } from '@/hooks/use-journal-store';
 import { MOOD_OPTIONS } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Slider } from '@/components/ui/slider';
 import { cn } from '@/lib/utils';
@@ -28,6 +28,14 @@ const journalSchema = z.object({
 type JournalFormData = z.infer<typeof journalSchema>;
 
 const moodMapping: Mood[] = ['sad', 'anxious', 'calm', 'energetic', 'happy'];
+const moodValueMap: Record<Mood, number> = {
+    'sad': 1,
+    'anxious': 2,
+    'calm': 3,
+    'energetic': 4,
+    'happy': 5,
+};
+
 
 const PreviousEntryCard = ({ entry }: { entry: JournalEntryType }) => {
   const moodOption = MOOD_OPTIONS.find(m => m.mood === entry.mood);
@@ -91,12 +99,12 @@ export default function JournalPage() {
           <div>
             <h2 className="font-semibold mb-3">Bagaimana Perasaan Anda Hari Ini?</h2>
             <div className="grid grid-cols-5 gap-2">
-              {MOOD_OPTIONS.map((mood, index) => (
+              {MOOD_OPTIONS.map((mood) => (
                 <div
                   key={mood.mood}
                   onClick={() => {
                     setSelectedMood(mood.mood)
-                    form.setValue('feeling', index + 1)
+                    form.setValue('feeling', moodValueMap[mood.mood])
                   }}
                   className={cn(
                     "flex flex-col items-center gap-2 p-2 rounded-lg border-2 cursor-pointer transition-colors",
@@ -104,7 +112,7 @@ export default function JournalPage() {
                   )}
                 >
                   <mood.icon className={cn("h-8 w-8", mood.color)} />
-                  <span className="text-xs font-bold">{index + 1}</span>
+                  <span className="text-xs font-bold">{moodValueMap[mood.mood]}</span>
                 </div>
               ))}
             </div>

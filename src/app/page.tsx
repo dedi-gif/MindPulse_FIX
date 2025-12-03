@@ -1,3 +1,4 @@
+
 "use client";
 
 import { BrainCircuit, TrendingUp, Sparkles, Activity } from 'lucide-react';
@@ -5,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from '@/components/ui/button';
 import { useJournal } from "@/hooks/use-journal-store";
 import { MoodHistoryChart } from "@/components/history/mood-history-chart";
+import { Mood } from '@/lib/types';
 
 
 const EmotionStatusCard = () => (
@@ -47,11 +49,11 @@ const EmotionPatternChart = () => {
     const last7DaysData = entries.length > 0 ? entries.slice(-7) : Array.from({ length: 7 }).map((_, i) => {
         const d = new Date();
         d.setDate(d.getDate() - (6 - i));
-        const moods = ['sad', 'anxious', 'calm', 'energetic', 'happy'];
+        const moods: Mood[] = ['sad', 'anxious', 'calm', 'energetic', 'happy'];
         return {
             id: `dummy-${i}`,
             date: d.toISOString(),
-            mood: moods[Math.floor(Math.random() * moods.length)] as any,
+            mood: moods[Math.floor(Math.random() * moods.length)],
             text: 'Dummy entry'
         };
     });

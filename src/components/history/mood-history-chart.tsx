@@ -1,6 +1,7 @@
+
 "use client";
 
-import { format, subDays } from 'date-fns';
+import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import {
   Area,
@@ -9,6 +10,7 @@ import {
   XAxis,
   Tooltip,
   YAxis,
+  ResponsiveContainer,
 } from 'recharts';
 
 import {
@@ -73,9 +75,9 @@ export function MoodHistoryChart({ entries }: MoodHistoryChartProps) {
         />
         <YAxis 
             dataKey="moodValue"
-            domain={[0, is7DayView ? 10 : 6]}
-            ticks={is7DayView ? [0, 3, 6, 10] : moodTicks.map(t => t.value)}
-            tickFormatter={(value) => is7DayView ? value.toString() : moodTicks.find(t => t.value === value)?.label ?? ''}
+            domain={[0, 6]}
+            ticks={moodTicks.map(t => t.value)}
+            tickFormatter={(value) => moodTicks.find(t => t.value === value)?.label ?? ''}
             tickLine={false}
             axisLine={false}
             tickMargin={8}
