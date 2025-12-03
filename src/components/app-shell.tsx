@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const navItems = [
 
 const desktopNavItems = [
     { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/history', label: 'History', icon: Calendar },
+    { href: '/history', label: 'Jurnal', icon: Book },
     { href: '/insights', label: 'Insights', icon: Sparkles },
     { href: '/settings', label: 'Settings', icon: Settings },
 ]
@@ -63,7 +63,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const isMobile = useIsMobile();
 
   const currentNavItems = isMobile ? navItems : desktopNavItems;
-  const currentLabel = currentNavItems.find(item => item.href === pathname)?.label
+  const currentLabel = navItems.find(item => item.href === pathname)?.label
 
   return (
     <SidebarProvider>
@@ -92,7 +92,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 >
                   <Link href={item.href}>
                     <item.icon />
-                    <span>{item.label}</span>
+                    <span>{item.label === 'History' ? 'Jurnal' : item.label}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
